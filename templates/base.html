@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+        
+        <script src="templates/utils.js"></script>
+
+        <script>
+            function getCurrentDateNTime() {
+                var now = Date() ;
+                document.getElementById( "dateNTime" ).value = now.toString() ;
+            }
+        </script>
+		<title>{{ the_title }}</title>
+		<link rel="stylesheet" href="static/hf.css"/>
+        <link rel="icon" href="static/app_icon.jpeg"
+        <table>
+            <tr>
+                <td></td> <td></td>  <td></td> <td></td> <td>Today : <input id="dateNTime" size=70 disabled >
+            </tr>
+        </table>
+	</head>
+	<body onload="getCurrentDateNTime()">
+		{% block body %}
+		{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1></h1>
+	<h2>{{ the_title }}</h2>
+    <table >
+        <tr >
+            <td valign="middle" ><b>Manage Data</b></td>
+            <td style="text-align:center"><a href='/expense_input' style="ima"><img src="static/expense.png"></a></td>
+            <td style="text-align:center"><a href='/expense_category_input'><img src="static/expense_categoriesv3.jpg"></a></td>
+            <td style="text-align:center"><a href='/store_input'><img src="static/store.png"></a></td>
+
+        </tr>
+        <tr>
+            <td valign="middle" ></td>
+            <td style="text-align:center">Manage Expenses</td>
+            <td style="text-align:center">Manage Categories</td>
+            <td style="text-align:center">Manage Stores</td>
+
+        </tr>
+
+    </table>
+    <hr>
+
+    <table class="mainmenu">
+        <tr>
+            <td valign="middle" ><b>All Reports</b></td>
+            <td style="text-align:center"><a href='/expenses_list'><img src="static/expense.png"></a></td>
+            <td style="text-align:center"><a href='/expense_categories_list?mode=page'><img src="static/expense_categoriesv3.jpg"></a></td>
+            <td style="text-align:center"><a href='/stores_list'><img src="static/store.png" target="_blank"></a></td>
+
+        </tr>
+        <tr>
+            <td valign="middle" ></td>
+            <td style="text-align:center">List Expenses</td>
+            <td style="text-align:center">List Categories</td>
+            <td style="text-align:center">List Stores</td>
+
+        </tr>
+
+        <!-- <tr><td><a href='/expenses_list_bydate'>All expenses</a></td></tr> -->
+    </table>
+
+{% endblock %}

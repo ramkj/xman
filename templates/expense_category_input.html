@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+	<h2>{{ the_title }}</h2>
+	<form method='POST' action='/expense_category_add'>
+            <p><b>Add new expense category</b></p>
+            <a href="/expense_categories_list?mode=popup" onclick="window.open('/expense_categories_list?mode=popup',
+                         'newwindow',
+                            'width=1200,height=850');
+              return false;">Click to view Expense Categories</a>
+            <table>
+                <tr><td>Expense Type</td><td><input type='TEXT' name='expense_type' width=60 required></td></tr>
+                <tr><td>Detail : </td><td><input type='TEXT' name='expense_type_detail' required></td></tr>
+                <tr><td>Click on submit once done ...  </td><td><input type='SUBMIT' value=' Save & Continue '></td></tr>
+                </td></tr>
+                <tr><td><a href='/'>Click here to go back : </a></td><td></td></tr>
+            </table>
+	</form>
+{% endblock %}
