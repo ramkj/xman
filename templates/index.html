@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 {% block body %}
-    <h1></h1>
-	<h2>{{ the_title }}</h2>
     <table >
         <tr >
             <td valign="middle" ><b>Manage Data</b></td>
@@ -26,7 +24,7 @@
             <td valign="middle" ><b>All Reports</b></td>
             <td style="text-align:center"><a href='/expenses_list'><img src="static/expense.png"></a></td>
             <td style="text-align:center"><a href='/expense_categories_list?mode=page'><img src="static/expense_categoriesv3.jpg"></a></td>
-            <td style="text-align:center"><a href='/stores_list'><img src="static/store.png" target="_blank"></a></td>
+            <td style="text-align:center"><a href='/stores_list?mode=page'><img src="static/store.png" target="_blank"></a></td>
 
         </tr>
         <tr>

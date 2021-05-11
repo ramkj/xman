@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block body %}
+	<form method='POST' action='/store_add'>
+            <p><b>Add Store / Outlet</b></p>
+            <table>
+                <tr>
+                    <td>
+                        <a href='/'>
+                            {% include 'back_image.html' %}
+                        </a>
+                    </td>
+                    <td><a href='/stores_list?mode=popup' target="_blank" onclick="window.open('/stores_list?mode=popup',
+                                'newwindow',
+                                'width=1200,height=850');
+                                return false;" >
+                                {% include 'search_image.html' %}
+                            </a></td>
+                </tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td>Store Name : </td><td><input type='TEXT' name='store_name' width=60 required></td></tr>
+                <tr><td>Store detail : </td><td><input type='TEXT' name='store_detail' required></td></tr>
+                <tr>
+                    <td>Home Delivery  : </td>
+                    <td>
+                        <input type="radio" id="hd_available" name="home_delivery" value="true">
+                        <label for="hd_available">Available</label>
+                        <input type="radio" id="hd_notavailable" name="home_delivery" value="false">
+                        <label for="hd_notavailable">Not Available</label>
+                    </td>
+                </tr>
+                <tr><td>Click on submit once done ...  </td><td><input type='SUBMIT' value=' Save & Continue '></td></tr>
+                </td></tr>
+                <tr><td></td><td></td></tr>
+            </table>
+	</form>
+{% endblock %}

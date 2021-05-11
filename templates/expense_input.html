@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block body %}
+	<form method='POST' action='/expense_add'>
+            <h3>Add Expenses</h3>
+            <table>
+                <tr>
+                    <td>
+                        <a href='/'>
+                            {% include 'back_image.html' %}
+                        </a></td>
+                    <td></td>
+                </tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+
+
+                <tr>
+                    <td>Expense Type : </td>
+                    <td>
+                        <select id="exp_type" name="exp_type">
+                        {%  for exp_type in expense_types %}
+                            <option value='{{ exp_type }}'>{{ exp_type }}</option>
+                        {%  endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Details</td>
+                    <td><input type='TEXT' name='exp_detail' width=60 required></td>
+                </tr>
+                <tr>
+                    <td>When : </td>
+                    <td><input type='date' name='exp_date' required></td>
+                </tr>
+                <tr>
+                    <td>Amount : </td>
+                    <td><input type='number' name='exp_amount' step="any" required></td>
+                </tr>
+                <tr>
+                    <td>Payment Type :</td>
+                    <td>
+                        <select id="payment_type" name="payment_type">
+                            {%  for payment_type in payment_types %}
+                                <option value='{{ payment_type}}'>{{payment_type}}</option>
+                            {%  endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Store Name : </td>
+                    <td>
+                        <select id="store_name" name="store_name">
+                            {%  for store_name in store_names %}
+                                <option value='{{store_name}}'>{{store_name}}</option>
+                            {%  endfor %}
+                        </select>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Spent by user : </td>
+                    <td>
+                        <select id="short_name" name="short_name">
+                            {%  for short_name in short_names %}
+                                <option value='{{short_name}}'>{{short_name}}</option>
+                            {%  endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Click on submit once done ...  </td>
+                    <td><input type='SUBMIT' value=' Save & Continue '></td>
+                </tr>
+            </table>
+	</form>
+{% endblock %}
