@@ -5,12 +5,22 @@
             {% for header in the_header %}
                 <th>{{ header }}</th>
             {% endfor %}
+            {% if module is not none %}
+                <th>Actions</th>
+            {% endif %}
         </tr>
         {%  for row in the_data %}
             <tr>
                 {% for col in row %}
                     <td>{{  col }}</td>
                 {% endfor %}
+                <td>
+                    {% if module is not none %}
+                        <a href={{ '/' + module + '_delete' + '?Id=' }}{{ row[ 0 ]}}  onclick="return confirm( 'Sure you want to delete ?' )">
+                            {% include 'trash_image.html' %}
+                        </a>
+                    {% endif %}
+                </td>
             </tr>
         {%  endfor %}
     </table>

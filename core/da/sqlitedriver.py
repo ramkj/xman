@@ -7,6 +7,8 @@ class SQLiteDriver:
 
     def __enter__(self) -> 'cursor':
         self.connection = sqlite3.connect(self.config)
+        assert self.connection is not None, 'failed getting connection from DB'
+        self.connection.execute( 'PRAGMA foreign_keys=ON ' )
         self.cursor = self.connection.cursor()
         return self.cursor
 

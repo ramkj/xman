@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block body %}
+	<form method='POST' action='/person_add'>
+            <p><b>Add Person</b></p>
+            <table>
+                <tr>
+                    <td>
+                        <a href='/'>
+                            {% include 'back_image.html' %}
+                        </a>
+                    </td>
+                    <td><a href='/person_list?mode=popup' target="_blank" onclick="window.open('/person_list?mode=popup',
+                                'newwindow',
+                                'width=1200,height=850');
+                                return false;" >
+                                {% include 'search_image.html' %}
+                            </a></td>
+                </tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td>Person First Name : </td><td><input type='TEXT' name='person_first_name' maxlength=100 required></td></tr>
+                <tr><td>Person Last Name : </td><td><input type='TEXT' name='person_last_name' maxlength=100 required></td></tr>
+                <tr><td>Person Short Name : </td><td><input type='TEXT' name='person_short_name' maxlength=50 required></td></tr>
+                <tr><td>Click on submit once done ...  </td><td><input type='SUBMIT' value=' Save & Continue '></td></tr>
+                </td></tr>
+                <tr><td></td><td></td></tr>
+            </table>
+	</form>
+{% endblock %}

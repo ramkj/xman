@@ -1,0 +1,3 @@
+_DATE_STR_DISPLAY_FORMAT_ = '%d/%m/%Y'
+# _DATE_STR_STORAGE_FORMAT_ = '%d/%m/%Y %H:%M:%S'
+_DATE_STR_STORAGE_FORMAT_ = '%Y/%m/%d %H:%M:%S'

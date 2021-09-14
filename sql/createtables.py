@@ -6,34 +6,38 @@ DB_FILE = '../db/expenses.db'
 CREATE_PAYMENT_TYPE = """   CREATE TABLE IF NOT EXISTS PAYMENT_TYPE (
                                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
                                 PAYMENT_MODE CHAR( 20 ) NOT NULL,
-                                PAYMENT_MODE_DETAIL CHAR( 80 )
+                                PAYMENT_MODE_DETAIL CHAR( 80 ), 
+                                UNIQUE( PAYMENT_MODE )
                         )"""
 
 CREATE_EXPENSE_CATEGORY = """CREATE TABLE IF NOT EXISTS EXPENSE_CATEGORY (
                                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
                                 EXPENSE_TYPE CHAR( 40 ),
-                                EXPENSE_TYPE_DETAIL CHAR( 80 )
+                                EXPENSE_TYPE_DETAIL CHAR( 80 ),
+                                UNIQUE( EXPENSE_TYPE )
                             ) """
 
 CREATE_PERSON = """CREATE TABLE IF NOT EXISTS PERSON (
                     ID INTEGER PRIMARY KEY AUTOINCREMENT,
                     PERSON_FIRST_NAME CHAR( 100 ) NOT NULL,
                     PERSON_LAST_NAME CHAR( 100 ) NOT NULL,
-                    PERSON_SHORT_NAME CHAR( 50 ) NOT NULL
+                    PERSON_SHORT_NAME CHAR( 50 ) NOT NULL,
+                    UNIQUE( PERSON_SHORT_NAME )
                 )"""
 
 CREATE_STORE = """CREATE TABLE IF NOT EXISTS STORE (
                         ID INTEGER PRIMARY KEY AUTOINCREMENT,
                         STORE_NAME CHAR( 40 ) NOT NULL,
                         STORE_DETAIL CHAR( 100 ),
-                        HOME_DELIVERY CHAR( 1 )
+                        HOME_DELIVERY CHAR( 1 ),
+                        UNIQUE( STORE_NAME )
                 )""" 
 
 CREATE_EXPENSE = """CREATE TABLE IF NOT EXISTS EXPENSE (
                         ID INTEGER PRIMARY KEY AUTOINCREMENT,
                         EXPENSE_DETAIL CHAR(60),
                         EXPENSE_CATEGORY_ID INTEGER REFERENCES EXPENSE_CATEGORY( ID ),
-                        EXPENSE_DATE INTEGER ,
+                        EXPENSE_DATE CHAR(40) NOT NULL ,
                         EXPENSE_AMOUNT REAL,
                         PAYMENT_TYPE_ID INTEGER NOT NULL, 
                         PERSON_ID INTEGER NOT NULL,
@@ -44,7 +48,7 @@ CREATE_EXPENSE = """CREATE TABLE IF NOT EXISTS EXPENSE (
                     )"""
 
 CREATE_LOGIN = """CREATE TABLE IF NOT EXISTS LOGIN (
-                    LOGIN_ID        CHAR( 75 ) NOT NULL,
+                    LOGIN_ID        CHAR( 75 ) PRIMARY KEY,
                     PASSWORD_HASH   CHAR( 256 ) NOT NULL,
                     ACTIVE          CHAR( 1 )
                 )"""
@@ -55,15 +59,14 @@ def insert_seed_data( connection ):
 
     print( 'started seed data insertion ...')
     cursor = connection.cursor() 
-    cursor.execute(  """INSERT INTO STORE ( store_name, store_detail, home_delivery) VALUES( 'Lumiere', 'Lumiere Organic store, HSR', 'Y' ) """ ) 
     cursor.execute( """INSERT INTO STORE ( store_name, store_detail, home_delivery) VALUES( 'Eco Store', 'Eco Store - Organic, HSR', 'Y' ) """ ) 
     cursor.execute( """INSERT INTO STORE ( store_name, store_detail, home_delivery) VALUES( 'Organic World', 'Organic World, 27th Main, HSR', 'Y' ) """ ) 
-    cursor.execute( """INSERT INTO STORE ( store_name, store_detail, home_delivery) VALUES( 'Lumiere', 'Lumiere Organic store, HSR', 'Y' ) """ ) 
 
     cursor.execute( """INSERT INTO PAYMENT_TYPE( PAYMENT_MODE, PAYMENT_MODE_DETAIL ) VALUES( 'CASH', 'Cash payment' )  """ ) 
-    cursor.execute( """INSERT INTO PAYMENT_TYPE( PAYMENT_MODE, PAYMENT_MODE_DETAIL ) VALUES( 'CARD', 'Card payment' )  """ ) 
-    cursor.execute( """INSERT INTO PAYMENT_TYPE( PAYMENT_MODE, PAYMENT_MODE_DETAIL ) VALUES( 'PAYTM', 'PayTM payment' )  """ ) 
-    cursor.execute( """INSERT INTO PAYMENT_TYPE( PAYMENT_MODE, PAYMENT_MODE_DETAIL ) VALUES( 'SavingsAcct', 'Payment from Savings Account' )  """ ) 
+    cursor.execute( """INSERT INTO PAYMENT_TYPE( PAYMENT_MODE, PAYMENT_MODE_DETAIL ) VALUES( 'CREDIT-CARD', 'Card payment' )  """ ) 
+    cursor.execute( """INSERT INTO PAYMENT_TYPE( PAYMENT_MODE, PAYMENT_MODE_DETAIL ) VALUES( 'UPI', 'PayTM payment' )  """ ) 
+    cursor.execute( """INSERT INTO PAYMENT_TYPE( PAYMENT_MODE, PAYMENT_MODE_DETAIL ) VALUES( 'NETBANKING', 'Payment from Savings Account' )  """ ) 
+    cursor.execute( """INSERT INTO PAYMENT_TYPE( PAYMENT_MODE, PAYMENT_MODE_DETAIL ) VALUES( 'DEBIT-CARD', 'Debit Card payment' )  """ ) 
 
     cursor.execute( """INSERT  INTO EXPENSE_CATEGORY( EXPENSE_TYPE, EXPENSE_TYPE_DETAIL ) VALUES( 'Veggies and Groceries', 'Vegetables and Groceries' )  """ ) 
     cursor.execute( """INSERT  INTO EXPENSE_CATEGORY( EXPENSE_TYPE, EXPENSE_TYPE_DETAIL ) VALUES( 'Stationaries', 'Stationaries and books' )  """ ) 

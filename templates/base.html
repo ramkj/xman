@@ -3,7 +3,10 @@
 	<head>
         <script>
             {% include "utils.js" %}
+            
+
         </script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
 		<title>{{ the_title }}</title>
 		<link rel="stylesheet" href="static/hf.css"/>
         <link rel="icon" href="static/app_icon.jpeg">
@@ -22,7 +25,13 @@
             <tr></tr>
             <tr></tr>
             <tr>
-                <td></td> <td></td>  <td></td> <td></td> <td>Today : <input id="dateNTime" size=70 disabled >
+                <td>
+
+                    {% if summary is not none %}
+                        <p style="color: blue;">Current Month's Status: spent {{ summary[ 1 ]}} time(s) - Total amount of Rs. {{ summary[ 2 ]}}</p>
+                    {% endif %}
+                        
+                </td>
             </tr>
         </table>
 	</body>

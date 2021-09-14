@@ -1,8 +1,19 @@
 {% extends 'list_data_base.html' %}
 {% block body %}
-<p>
-    <a href='/'>
-        {% include 'back_image.html' %}
-    </a></p>   
+<table>
+    <tr>
+        <td>
+            <a href='/'>
+                {% include 'back_image.html' %}
+            </a>
+            {% if download is defined %}
+                <a href='/download_expenses'>
+                    {% include 'download_image.html' %}
+                </a>        
+            {% endif %}
+        </td>
+    </tr>
+</table>
+
 {{ super() }}
 {% endblock %}
