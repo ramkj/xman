@@ -87,8 +87,11 @@ class BusinessLayer:
             expense_id = data[ 0 ]
             expense_detail = data[ 1 ] 
 
-            # converting string into date 
-            expense_date = datetime.datetime.now().strptime( data[ 2 ], _DATE_STR_STORAGE_FORMAT_ ) 
+            expense_date = None 
+            if( isinstance( data[ 2 ], str )):
+                expense_date = datetime.datetime.now().strptime( data[ 2 ], _DATE_STR_STORAGE_FORMAT_ ) 
+            else:
+                expense_date = data[ 2 ] 
             expense_amount = data[ 3 ] 
             expense_type = expenseCategoryMap[ data[ 4 ] ]
             payment_mode = paymentTypeMap[ data[ 5 ] ]

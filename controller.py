@@ -378,9 +378,10 @@ def getExpenseSummary():
     return result
 
 # Main code ...
-if len( sys.argv ) == 2:
+if len( sys.argv ) > 2:
     factory_object = XManFactory() 
-    factory_object.createObjects( sys.argv[ 1 ] )
+    dbargs = { 'dbtype' : sys.argv[ 1 ], 'username' : sys.argv[ 2 ], 'password' : sys.argv[ 3 ], 'hostname' : sys.argv[ 4 ] , 'dbname' : sys.argv[ 5 ] }
+    factory_object.createObjects( dbargs  )
     app.run(debug=True) 
 else:
     print( 'Invalid usage python3 controller.py <DB-String>' )

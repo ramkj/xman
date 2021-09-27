@@ -5,18 +5,23 @@ from core.da.dal import DataAccessLayer
 from core.bl import BusinessLayer
 from core.rl import ReportingLayer
 from core.da.sqlite_dal import SQLiteDataAccessLayer
+from core.da.mysql_dal import MySQLDataAccessLayer
 from core.csv_generator import CSVGenerator
 
 class XManFactory:
 
     def __init__( self ):
-        self.db = 'SQLITE'
+        # default configuration set to SQLite
+        self.dbconfig =  { 'dbtype' : 'SQLITE' } 
 
-    def createObjects( self, dbname : str  ) -> None:
-        self.db = dbname 
-        
-        if str == 'SQLITE':
+    def createObjects( self, dbargs : dict  ) -> None:
+        self.dbconfig = dbargs
+
+        # DA is set based on the parameter passed (from command line)        
+        if self.dbconfig[ 'dbtype'] == 'SQLITE':
             self.dal = SQLiteDataAccessLayer() 
+        elif self.dbconfig[ 'dbtype'] == 'MYSQL':
+            self.dal = MySQLDataAccessLayer( self.dbconfig )     
         else:
             self.dal = SQLiteDataAccessLayer() 
 
