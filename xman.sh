@@ -4,7 +4,6 @@ DBTYPE=MYSQL
 # There are no specific configurations for SQLite - the data file will be placed in the db folder
 
 # DB Parameters required for MySQL
-DISPLAY_NAME="XMan"
 USERNAME=xmanapp
 PASSWORD=xmanapp
 HOST=localhost
